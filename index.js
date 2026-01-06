@@ -12,7 +12,7 @@ const port = 3001;
 app.use(
   cors({
     origin: "https://nuzulizzati994-web.github.io",
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
