@@ -36,7 +36,7 @@
   };
   document.addEventListener("DOMContentLoaded", async () => {
     const api = axios.create({
-      baseURL: `http://${ip()}/api`,
+      baseURL: `https://${ip()}/api`,
       timeout: 10000,
     });
     api.interceptors.request.use(
@@ -124,7 +124,7 @@
         const data = collectPageValues();
         const stage = parseInt(Varstage.getValue());
         const request = await api.post(
-          "http://" + ip() + "/api/progress/save",
+          "https://" + ip() + "/api/progress/save",
           {
             caseId: kasus,
             data,
@@ -157,7 +157,7 @@
         if (status) Varstage.set(kasus);
         const data = collectPageValues();
         const request = await api.post(
-          "http://" + ip() + "/api/progress/save",
+          "https://" + ip() + "/api/progress/save",
           {
             caseId: kasus,
             data,
@@ -237,9 +237,9 @@
       return data;
     }
     async function login() {
-      const url = "http://" + ip() + "/api/auth/login";
-      const username = document.querySelector("input[name='username']").value;
-      const password = document.querySelector("input[name='password']").value;
+      const url = "https://" + ip() + "/api/auth/login";
+      const username = Varusername_1.getValue();
+      const password = Varpassword_1.getValue().value;
       await axios
         .post(url, { username, password })
         .then(async function (response) {
@@ -262,9 +262,9 @@
         });
     }
     async function signup() {
-      const url = "http://" + ip() + "/api/auth/signup";
-      const username = document.querySelector("input[name='username']").value;
-      const password = document.querySelector("input[name='password']").value;
+      const url = "https://" + ip() + "/api/auth/signup";
+      const username = Varusername_1.getValue();
+      const password = Varpassword_1.getValue();
       axios
         .post(url, { username, password })
         .then(function (response) {
