@@ -19,6 +19,11 @@ app.use(
 
 app.use(express.json());
 app.use("/api", routes);
+app.get("/test", (req, res) => {
+  return res.status(200).json({
+    message: "success",
+  });
+});
 
 sequelize
   .sync()
