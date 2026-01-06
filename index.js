@@ -11,7 +11,7 @@ const port = process.env.PORT || 3000;
 
 app.use(
   cors({
-    origin: "https://nuzulizzati994-web.github.io/*",
+    origin: "https://nuzulizzati994-web.github.io",
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
