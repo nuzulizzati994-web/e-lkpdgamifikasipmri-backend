@@ -15,7 +15,7 @@ const sequelize = new Sequelize(
 (async () => {
   try {
     await sequelize.authenticate();
-    console.log("✅ Terhubung ke database SQLite di:", dbPath);
+    console.log("✅ Terhubung ke database Mysql");
   } catch (err) {
     console.error("❌ Gagal konek ke database:", err.message);
   }
