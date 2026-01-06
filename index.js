@@ -14,6 +14,7 @@ app.use(
     origin: "https://nuzulizzati994-web.github.io",
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true
   })
 );
 
