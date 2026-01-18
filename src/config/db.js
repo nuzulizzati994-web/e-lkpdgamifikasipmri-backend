@@ -5,7 +5,7 @@ const sequelize = new Sequelize(
   "admin-k2ms",
   "k2msdensoindonesia",
   {
-    host: "127.0.0.1",
+    host: "31.97.107.156",
     dialect: "mysql",
     logging: console.log,
   }
