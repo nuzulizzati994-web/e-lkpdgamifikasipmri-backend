@@ -55,8 +55,8 @@ exports.signup = async (req, res) => {
 
     await Progress.create({
       user_id: requestUser.id,
-      data: "{}",
-      point: "{}",
+      data: {},
+      point: {},
     });
 
     return res.status(200).json({
