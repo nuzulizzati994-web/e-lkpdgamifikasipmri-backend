@@ -11,11 +11,13 @@ const port = 3001;
 
 app.use(
   cors({
-    origin: "https://nuzulizzati994-web.github.io",
+    origin: (origin, callback) => {
+      callback(null, origin); // TERIMA SEMUA ORIGIN
+    },
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true
-  })
+    credentials: true,
+  }),
 );
 
 app.use(express.json());
@@ -31,7 +33,7 @@ sequelize
   .then(() => {
     console.log("Database connected");
     app.listen(port, "0.0.0.0", () =>
-      console.log(`Server running on port ${port}`)
+      console.log(`Server running on port ${port}`),
     );
   })
   .catch(console.error);
