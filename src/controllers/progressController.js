@@ -48,4 +48,33 @@ exports.save = async (req, res) => {
   }
 };
 
+exports.export = async (req, res) => {
+  try {
+    const authHeader = req.headers.authorization;
+
+    if (authHeader != 'udangKejuTepungGoreng')
+
+    const request = await Progress.findAll({
+      include: [
+        {
+          association: 'users',
+          attributes: ['username']
+        }
+      ],
+      raw: true
+    });
+
+    const result = request.map((item) => ({
+      id: item.id,
+      user_id: item.user_id,
+      name: item['users.username'],
+      data: item.data,
+    }))
+
+    console.log(result)
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
 // exports
