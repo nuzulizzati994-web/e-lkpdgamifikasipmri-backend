@@ -76,6 +76,10 @@ exports.export = async (req, res) => {
     }));
 
     console.log(result);
+    return res.status(200).json({
+      status: 'success',
+      data: result
+    })
   } catch (error) {
     console.error("Error:", error);
   }
