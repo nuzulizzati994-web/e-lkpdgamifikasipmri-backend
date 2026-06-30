@@ -52,11 +52,11 @@ exports.export = async (req, res) => {
   try {
     const authHeader = req.headers.authorization;
 
-    if (authHeader != "udangKejuTepungGoreng") {
-      return res.status(400).json({
-        status: "failed",
-      });
-    }
+    // if (authHeader != "udangKejuTepungGoreng") {
+    //   return res.status(400).json({
+    //     status: "failed",
+    //   });
+    // }
 
     const request = await Progress.findAll({
       include: [
@@ -72,14 +72,16 @@ exports.export = async (req, res) => {
       id: item.id,
       user_id: item.user_id,
       name: item["users.username"],
-      data: item.data,
+      data: Object.entries(item.data).filter(([key, value]) => key !== 'case0').map(([key, i]) => {
+          return i;
+      }),
     }));
 
     console.log(result);
     return res.status(200).json({
-      status: 'success',
-      data: result
-    })
+      status: "success",
+      data: result,
+    });
   } catch (error) {
     console.error("Error:", error);
   }
