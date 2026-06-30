@@ -77,7 +77,7 @@ exports.export = async (req, res) => {
       }),
     }));
 
-    console.log(result);
+    console.dir(result, {depth: null, colors: true});
     return res.status(200).json({
       status: "success",
       data: result,
