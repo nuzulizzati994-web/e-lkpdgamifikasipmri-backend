@@ -41,8 +41,8 @@ exports.save = async (req, res) => {
     });
 
     return res.status(200).json({
-      status: 'success'
-    })
+      status: "success",
+    });
   } catch (error) {
     console.error("Error:", error);
   }
@@ -52,29 +52,33 @@ exports.export = async (req, res) => {
   try {
     const authHeader = req.headers.authorization;
 
-    if (authHeader != 'udangKejuTepungGoreng')
+    if (authHeader != "udangKejuTepungGoreng") {
+      return res.status(400).json({
+        status: "failed",
+      });
+    }
 
     const request = await Progress.findAll({
       include: [
         {
-          association: 'users',
-          attributes: ['username']
-        }
+          association: "users",
+          attributes: ["username"],
+        },
       ],
-      raw: true
+      raw: true,
     });
 
     const result = request.map((item) => ({
       id: item.id,
       user_id: item.user_id,
-      name: item['users.username'],
+      name: item["users.username"],
       data: item.data,
-    }))
+    }));
 
-    console.log(result)
+    console.log(result);
   } catch (error) {
     console.error("Error:", error);
   }
-}
+};
 
 // exports
